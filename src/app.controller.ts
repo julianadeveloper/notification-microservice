@@ -1,23 +1,24 @@
 import { Post } from '@nestjs/common';
 import { Body } from '@nestjs/common';
+import { Delete } from '@nestjs/common';
 import { Controller, Get } from '@nestjs/common';
 import { randomUUID } from 'crypto';
-import { BodyNotificationDto } from 'prisma/dto/body.notificaion.dto';
+import { BodyNotificationDto } from 'src/dto/body.notificaion.dto';
 import { PrismaService } from './prisma.service';
 
 @Controller('notifications')
 export class AppController {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(private readonly prismaService: PrismaService) {}
 
   @Get()
   listNotifications() {
-    return this.prisma.notification.findMany();
+    return this.prismaService.notification.findMany();
   }
 
   @Post()
   async createNotification(@Body() body: BodyNotificationDto) {
     const { recipientId, content, category } = body;
-    await this.prisma.notification.create({
+    await this.prismaService.notification.create({
       data: {
         id: randomUUID(),
         content,
@@ -25,5 +26,10 @@ export class AppController {
         recipientId,
       },
     });
+  }
+  @Delete()
+  @Post()
+  async deleteNotification() {
+    await this.prismaService.notification.deleteMany();
   }
 }
