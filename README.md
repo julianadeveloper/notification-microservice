@@ -71,3 +71,22 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+
+## First Configs:
+
+- Install Prisma DB and Prisma CLI;
+- Create Services Mail
+- Concept of dependency injection and inversion
+- Provide e UseClass in Service Module - Cause is used class implementation 
+
+##  Prisma
+
+- npx prisma migrate dev - Create Migrations
+Version control for modifys in database
+
+- npx prisma studio
+  Ui for prisma database
+
+
+https://docs.nestjs.com/recipes/prisma#create-two-database-tables-with-prisma-migrate
